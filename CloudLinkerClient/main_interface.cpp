@@ -14,7 +14,7 @@ Main_interface::Main_interface(QWidget *parent)
 
     // 设置用户信息卡片
     setUserInfoCardVisible(true);
-    // setUserInfoCardPixmap(QPixmap(":/avatar.png"));
+    setUserInfoCardPixmap(QPixmap(":/res/icon/20250620183153.jpg"));
 
     //添加好友分组
     QString friendKey;

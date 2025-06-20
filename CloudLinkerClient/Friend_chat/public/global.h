@@ -22,7 +22,7 @@ const int FontSize = 13;
 const int IconWidth = 60;
 const int IconHeight = 60;
 
-const QString IconPath_Self = ":/res/icon/avatar_self.jpg";
+const QString IconPath_Self = ":/res/icon/20250620183153.jpg";
 const QString IconPath_Peer = ":/res/icon/avatar_peer.jpg";
 const QString IconPath_LoadAnime = ":/res/icon/load_anime.gif";
 

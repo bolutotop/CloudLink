@@ -66,3 +66,5 @@ RESOURCES += \
     Friend_chat/res.qrc \
     config.qrc \
     pic.qrc
+
+DISTFILES +=

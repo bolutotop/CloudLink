@@ -1,0 +1,13 @@
+[客户端2025-06-20 18:51:33.643] [cloudlinkerclient.cpp:137] 初始化IP:127.0.0.1,PORT:8888
+[客户端2025-06-20 18:51:33.825] [cloudlinkerclient.cpp:244] 客户端连接成功
+[客户端2025-06-20 18:51:42.976] [cloudlinkerclient.cpp:252] 客户端接受消息:消息长度为:76字节
+[客户端2025-06-20 18:51:47.801] [cloudlinkerclient.cpp:252] jack客户端接受消息:消息长度为:76字节
+[客户端2025-06-20 18:51:47.882] [cloudlinkerclient.cpp:286] 客户端: jack登录成功，路径为:./jack
+[客户端2025-06-20 18:51:47.912] [cloudlinkerclient.cpp:252] jack客户端接受消息:消息长度为:77字节
+[客户端2025-06-20 18:51:55.751] [cloudlinkerclient.cpp:252] jack客户端接受消息:消息长度为:76字节
+[客户端2025-06-20 18:51:55.755] [cloudlinkerclient.cpp:252] jack客户端接受消息:消息长度为:156字节
+[客户端2025-06-20 18:52:07.159] [cloudlinkerclient.cpp:252] jack客户端接受消息:消息长度为:156字节
+[客户端2025-06-20 18:52:33.350] [cloudlinkerclient.cpp:252] jack客户端接受消息:消息长度为:76字节
+[客户端2025-06-20 18:52:33.351] [cloudlinkerclient.cpp:252] jack客户端接受消息:消息长度为:236字节
+[客户端2025-06-20 18:52:50.289] [cloudlinkerclient.cpp:252] jack客户端接受消息:消息长度为:76字节
+[客户端2025-06-20 18:52:50.291] [cloudlinkerclient.cpp:252] jack客户端接受消息:消息长度为:316字节
