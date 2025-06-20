@@ -30,7 +30,7 @@
 ```
 重写**incomingConnection()** 函数处理客户端的连接，当有客户端连接时进入此函数,使用**QList<MytcpSocket*> m_tcpSocketList**来存放客户端**socket**，进行多个客户端的管理
 
-## protocol自定义通讯协议类
+## protocol自定义通讯协议
 
 ### 弹性结构体
 
@@ -306,4 +306,41 @@ void MytcpSocket::recvMsg()//处理信号
 }
 ```
 先是到处理命令，设置标识符，等客户端计时器，之后进入**else**处理文件传输。
+## 客户端AI模块
+### 使用json向服务器发送http请求
+```c++
+    QNetworkRequest request;
+    request.setUrl(QUrl("https://api.deepseek.com/chat/completions"));
+    request.setHeader(QNetworkRequest::ContentTypeHeader,"application/json");
+    request.setRawHeader("Accept","application/json");
+    request.setRawHeader("Authorization","Bearer ");
+```
+设置头等配置
+### 解析服务器发送过来的json
+```c++
+    connect(reply,&QNetworkReply::readyRead,this,[=]{
+        while(reply->canReadLine())
+        {
+            QString line=reply->readLine().trimmed();
 
+            if(line.startsWith("data: "))
+            {
+                line.remove(0,6);
+
+                QJsonParseError error;
+                QJsonDocument doc=QJsonDocument::fromJson(line.toUtf8(),&error);
+                if(error.error==QJsonParseError::NoError)
+                {
+                    QString content=doc.object()["choices"].toArray().first().toObject()["delta"].toObject()["content"].toString();
+                    if(!content.isEmpty())
+                    {
+                        qDebug()<<content;
+                        ui->output_textEdit->moveCursor(QTextCursor::End);
+                        ui->output_textEdit->insertPlainText(content);
+                    }
+                }
+            }
+        }
+    });
+```
+解析为字符串
