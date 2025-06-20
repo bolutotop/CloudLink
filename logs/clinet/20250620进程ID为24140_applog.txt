@@ -1,0 +1,8 @@
+[客户端2025-06-20 16:25:38.684] [cloudlinkerclient.cpp:137] 初始化IP:127.0.0.1,PORT:8888
+[客户端2025-06-20 16:25:38.862] [cloudlinkerclient.cpp:244] 客户端连接成功
+[客户端2025-06-20 16:25:43.515] [cloudlinkerclient.cpp:252] tom客户端接受消息:消息长度为:76字节
+[客户端2025-06-20 16:25:43.580] [cloudlinkerclient.cpp:286] 客户端: tom登录成功，路径为:./tom
+[客户端2025-06-20 16:25:43.605] [cloudlinkerclient.cpp:252] tom客户端接受消息:消息长度为:109字节
+[客户端2025-06-20 16:25:48.968] [cloudlinkerclient.cpp:252] tom客户端接受消息:消息长度为:83字节
+[客户端2025-06-20 16:29:17.108] [cloudlinkerclient.cpp:252] tom客户端接受消息:消息长度为:76字节
+[客户端2025-06-20 16:29:17.109] [cloudlinkerclient.cpp:252] tom客户端接受消息:消息长度为:77字节

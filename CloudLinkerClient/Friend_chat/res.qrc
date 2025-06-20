@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/icon/avatar_peer.jpg</file>
+        <file>res/icon/avatar_self.jpg</file>
+        <file>res/icon/load_anime.gif</file>
+        <file>res/style/stylesheet.qss</file>
+    </qresource>
+</RCC>
