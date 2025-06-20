@@ -10,7 +10,10 @@
     connect(&m_tcpsocket,SIGNAL(readyRead()),this,SLOT(recvMsg()));
     connect(&m_tcpsocket,SIGNAL(disconnected()),this,SLOT(clinetOffline()));
 ```
-使用`connectToHost`函数连接服务端，使用`connected`处理连接成功, 使用`readyRead`信号接收服务端发送的消息，使用`disconnected`信号检测客户端与服务端的连接状态。
+- **连接建立**：**connectToHost()** 函数初始化 TCP 连接
+- **连接成功**：**connected()** 信号触发 **showConnect()** 槽
+- **数据接收**：**readyRead()** 信号触发 **recvMsg()** 槽
+- **断开检测**：**disconnected()** 信号触发 **clientOffline()** 槽
 
 ### mytcpserver继承QTcpServer的类中
 ```c++
@@ -25,7 +28,7 @@
     connect(pTcpSock,SIGNAL(offline(MytcpSocket*)),this,SLOT(deleteSocket(MytcpSocket*)));
 }
 ```
-重写incomingConnection()函数处理客户端的连接，当有客户端连接时进入此函数,使用`QList<MytcpSocket*> m_tcpSocketList;`来存放客户端socket，进行多个客户端的管理
+重写**incomingConnection()** 函数处理客户端的连接，当有客户端连接时进入此函数,使用**QList<MytcpSocket*> m_tcpSocketList**来存放客户端**socket**，进行多个客户端的管理
 
 ## protocol自定义通讯协议类
 
@@ -63,7 +66,7 @@ PDU *mkPDU(uint uiMsgLen)
     return pdu;
 }
 ```
-计算总协议数据单元大小，使用`malloc`函数分配内存空间，使用`memset`函数初始化内存，返回这个结构体指针。
+计算总协议数据单元大小，使用**malloc**函数分配内存空间，使用**memset**函数初始化内存，返回这个结构体指针。
 
 ### 消息类型枚举
 ```c++
@@ -104,7 +107,7 @@ struct FileInfo
     free(pdu);
     pdu=NULL;
 ```
-使用`m_tcpsocket`的`write`函数发送消息，使用`mkPDU`函数创建协议数据单元，`消息类型为ENUM_MSG_TYPE_LOGIN_REQUEST`,使用`strncpy`函数将用户名和密码复制到协议数据单元中，使用`free`函数释放内存空间。
+使用**m_tcpsocket** 的 **write**函数发送消息，使用 **mkPDU** 函数创建协议数据单元 ，**消息类型为ENUM_MSG_TYPE_LOGIN_REQUEST** ,使用**strncpy**函数将用户名和密码复制到协议数据单元中，使用**free**函数释放内存空间。
 
 ### 服务端处理消息(登录请求演示)
 
@@ -118,11 +121,15 @@ struct FileInfo
     PDU* pdu =mkPDU(uiMsgLen);//分配pdu的额外内存
     this->read(reinterpret_cast<char*>(pdu)+sizeof(uint),uiPDULen-sizeof(uint));//接收uiMsgType后的数据
 ```
-内存示意图 
-_____________________________________________________________________
-|           |            |                  |           |           | 
-|___________|____________|__________________|___________|___________|
-|uiPDULen[4]|uiMsgType[4]|    caData[64]    |uiMsgLen[4]|caMsg[未知]|
+
+```
+内存示意图
+ 0      4      8                72      76       结束
+┌──────┬──────┬────────────────┬───────┬────────┐
+│PDULen│MsgType│    caData      │MsgLen │ caMsg  │
+└──────┴──────┴────────────────┴───────┴────────┘
+◄─4B─►◄─4B─►◄───────64B───────►◄─4B─►◄─变长区──►
+```
 
 先读取头部信息 总协议数据单元的大小，然后根据总协议数据单元的大小分配内存，然后读取剩余数据，最后根据消息类型处理消息。
 
@@ -172,7 +179,7 @@ private:
 
     QSqlDatabase m_db;
 ``` 
-单例模式，使用`QMutex`互斥锁保证线程安全。
+单例模式，使用**QMutex**互斥锁保证线程安全。
 #### 初始化init()
 ```c++
     m_db.setHostName("localhost");
@@ -197,7 +204,7 @@ private:
 
     //析构调用 m_db.close();确保资源释放
 ```
-`setHostName`数据库的主机名，`setDatabaseName`数据库的文件名，`open`打开数据库。
+**setHostName**设置数据库的主机名，**setDatabaseName**设置数据库的文件名，**open**打开数据库。
 
 #### 数据库操作登录为例
 ```c++
@@ -224,7 +231,7 @@ bool OpenDB::login(const char *username, const char *password)
     }
 }
 ```
-使用`QMutexLocker lock(&m_mutex);`确保线程安全,`exec`执行命令，`next`判断是否还有下一条数据。
+使用**QMutexLocker lock(&m_mutex)** 确保线程安全,**exec**执行命令，**next**判断是否还有下一条数据。
 
 ## 文件传输
 
@@ -298,5 +305,5 @@ void MytcpSocket::recvMsg()//处理信号
     }
 }
 ```
-先是到处理命令，设置标识符，等客户端计时器，之后进入`else`处理文件传输。
+先是到处理命令，设置标识符，等客户端计时器，之后进入**else**处理文件传输。
 
