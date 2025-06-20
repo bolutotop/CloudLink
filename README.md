@@ -152,3 +152,16 @@ CloudLinker/
 ## 客户端界面
 ### 登录界面
 - ![Logo 描述文字](/Image/Quicker_20250620_182334.png)
+
+### 注册界面
+- ![Logo 描述文字](/Image/Quicker_20250620_182419.png)
+
+### 聊天界面
+- ![Logo 描述文字](/Image/Quicker_20250620_184246.png)
+
+### 网盘界面
+- ![Logo 描述文字](/Image/Quicker_20250620_185315.png)
+
+### AI聊天界面
+- ![Logo 描述文字](/Image/Quicker_20250620_185540.png)
+
