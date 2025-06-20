@@ -34,7 +34,6 @@ CloudLinker是一个基于Qt的现代化即时通讯和云存储应用程序，�
 - 流畅的动画效果
 - 响应式设计
 - 切换主题支持
-- ![Logo 描述文字](/Image/Quicker_20250620_182334.png)
 ## 技术架构
 
 ### 客户端 (CloudLinkerClient)
@@ -150,3 +149,6 @@ CloudLinker/
 - 日志类需要改一下 logger.cpp 9行，把默认的日志目录改成自己的目录 QString customLogDir = "C:/Users/55047/Desktop/myproject/CloudLinker/logs";
 - AI对话模型 ai_model_dialogue.cpp 37行改为自己的deepseek APIket     request.setRawHeader("Authorization","Bearer 自己的APIkey");
 - 将CloudLinker\CloudLinkerClient\libs下的ElaWidgetTools文件夹复制到客户端输出目录中
+## 客户端界面
+### 登录界面
+- ![Logo 描述文字](/Image/Quicker_20250620_182334.png)
