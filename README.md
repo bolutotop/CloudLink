@@ -34,7 +34,7 @@ CloudLinker是一个基于Qt的现代化即时通讯和云存储应用程序，�
 - 流畅的动画效果
 - 响应式设计
 - 切换主题支持
-![Logo 描述文字](/Image/Quicker_20250620_182334.png)
+- ![Logo 描述文字](/Image/Quicker_20250620_182334.png)
 ## 技术架构
 
 ### 客户端 (CloudLinkerClient)
